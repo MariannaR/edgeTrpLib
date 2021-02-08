@@ -241,7 +241,7 @@ calcVint <- function(shares, totdem_regr, prices, mj_km_data, years){
                 totcost[year %in% years[years>baseyear], c("region", "technology", "year", "vehicle_type", "subsector_L1", "subsector_L2", "subsector_L3", "sector", "non_fuel_price", "tot_price", "fuel_price_pkm",  "tot_VOT_price", "sector_fuel")], by = c("region", "technology", "year", "vehicle_type", "subsector_L1", "subsector_L2", "subsector_L3", "sector", "non_fuel_price", "tot_price", "fuel_price_pkm",  "tot_VOT_price", "sector_fuel"), all = TRUE)
 
   ## calculate the average intensity of the fleet
-  mj_km_data4W = mj_km_data[ subsector_L1 %in% c("trn_pass_road_LDV_4W"),]
+  mj_km_data4W = mj_km_data[ subsector_L1 %in% c("trn_pass_road_LDV_4W", "trn_freight_road_tmp_subsector_L1"),]
   mj_km_data4W[, variable := paste0("C_", year)] ## attribute to the column variable the year in wich the logit based value starts
   mj_km_data4W_techtmp = copy(mj_km_data4W) ## create a temporary copy, it is used not to delete the year column in the original dt
   mj_km_data4W_techtmp = mj_km_data4W_techtmp[, c("year") := NULL]
